@@ -7,12 +7,12 @@
 class viajeModel{
     private $db;
 function __construct() {
-    $this->$db = new PDO('mysql:host=localhost;dbname=uber_viajes;charset=utf8', 'root', '');
+    $this-> db = new PDO('mysql:host=localhost;dbname=uber_viajes;charset=utf8', 'root', '');
 }
 
 function getViaje() {
     // 2. ejecuto la consulta SQL (SELECT * FROM viaje)
-    $query = $db->prepare('SELECT * FROM viaje');
+    $query = $this->db->prepare('SELECT * FROM viaje');
     $query->execute();
 
     // 3. obtengo los resultados de la consulta
@@ -23,14 +23,13 @@ function getViaje() {
 
 function getViajeById(){
 
-    $query = $db->prepare('SELECT * FROM viaje WHERE ID_viaje = ?');
+    $query = $this->db->prepare('SELECT * FROM viaje WHERE ID_viaje = ?');
     $query->execute();
 
     $viaje = $query->fetch(PDO::FETCH_OBJ);
 
     return $viaje;
 }
- 
 function agregarViaje($fecha, $origen, $destino, $ID_viaje, $ID_conductor, $ID_usuario){
     $query = $this->db->prepare('INSERT INTO viaje(fecha, origen, destino, ID_viaje, ID_conductor, ID_usuario) VALUES (?, ?, ?, ?, ?, ?)');
         $query->execute([$fecha, $origen, $destino, $ID_viaje, $ID_conductor, $ID_usuario]);

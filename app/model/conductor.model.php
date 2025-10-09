@@ -3,12 +3,12 @@
 class conductorModel{
        private $db;
 function __construct() {
-    $this->$db = new PDO('mysql:host=localhost;dbname=uber_viajes;charset=utf8', 'root', '');
+    $this->db = new PDO('mysql:host=localhost;dbname=uber_viajes;charset=utf8', 'root', '');
 }
  
 function getConductor(){
       // 2. ejecuto la consulta SQL (SELECT * FROM viaje)
-    $query = $db->prepare('SELECT * FROM conductor');
+    $query = $this-> db->prepare('SELECT * FROM conductor');
     $query->execute();
 
     // 3. obtengo los resultados de la consulta
