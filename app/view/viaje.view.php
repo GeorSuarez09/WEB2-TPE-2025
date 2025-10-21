@@ -2,10 +2,10 @@
 <?php 
 class viajeView{
 
-    function verViajes($viajes, $conductores){
+    function verViajes($viajes, $conductores, $usuario){
         require_once 'templates/viajes/viajelista.phtml';
     }
-    function formularioViaje($conductores){
+    function formularioViaje($conductores, $usuario){
         require_once 'templates/viajes/formViaje.phtml';
     }
     function formEditarViaje($ID_viaje, $viaje, $conductor, $conductores){
