@@ -1,0 +1,21 @@
+<?php require_once './templates/header.php'; ?>
+<div>
+    <h3>Agregar un Nuevo Conductor</h3>
+    <form action="<?= BASE_URL ?>agregarC" method="POST" novalidate>
+        <div class="col1">
+            <label for="nombre">Nombre del conductor:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+
+        <div class="col1">
+            <label for="vehiculo">Vehiculo:</label>
+            <input type="text" id="vehiculo" name="vehiculo" required>
+        </div>
+
+        <input type="hidden" name="ID_usuario" value="1"> <!-- o el id real del usuario logueado -->
+
+        <div class="col1">
+            <button type="submit">Agregar  Conductor</button>
+        </div>
+    </form>
+</div>

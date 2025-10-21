@@ -1,0 +1,25 @@
+<div>
+    <h3>Conductores</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre conductor</th>
+                <th>Vehículo</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($conductores as $c): ?> 
+            <tr>
+                <td><?= $c->nombre ?></td>
+                <td><?= $c->vehiculo ?></td>
+                <td>
+                    <a href="editarC/<?= $c->ID_conductor ?>">Editar</a>
+                    <a href="<?= BASE_URL ?>eliminarC/<?= $c->ID_conductor ?>">Eliminar</a>
+                    <a href="<?= BASE_URL ?>verMasC/<?= $c->ID_conductor ?>">Ver Más</a>
+                    <a href="<?= BASE_URL ?>viajesAsignados/<?= $c->ID_conductor ?>">Ver Más Viajes</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

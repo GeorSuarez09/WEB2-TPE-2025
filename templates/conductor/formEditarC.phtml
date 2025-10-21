@@ -1,0 +1,17 @@
+<form method="POST" action="<?= BASE_URL ?>updateC/<?= $ID_conductor ?>">
+    <input type="hidden" name="ID_conductor" value="<?= $conductor->ID_conductor ?>">
+
+    <div class="col1">
+        <label for="nombre">Nombre del conductor:</label>
+        <input type="text" id="nombre" name="nombre" value="<?= $conductor->nombre ?>" required>
+    </div>
+
+    <div class="col1">
+        <label for="vehiculo">Vehículo:</label>
+        <input type="text" id="vehiculo" name="vehiculo" value="<?= $conductor->vehiculo ?>" required>
+    </div>
+
+    <div class="col1">
+        <button type="submit">Actualizar</button>
+    </div>
+</form>

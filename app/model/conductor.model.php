@@ -23,21 +23,34 @@ function getConductorById($ID_conductor){
 
         return $conductor;
 }
-function agregarConductor($ID_conductor, $nombre, $vehiculo){
-       $query = $this->db->prepare("INSERT INTO conductor(ID_conductor, nombre, vehiculo) VALUES(?,?,?)");
-        $query->execute([$ID_conductor, $nombre, $vehiculo]);
+function agregarConductor($nombre, $vehiculo){
+       $query = $this->db->prepare("INSERT INTO conductor(nombre, vehiculo) VALUES(?,?)");
+        $query->execute([$nombre, $vehiculo]);
           $ID_conductor = $this->db->lastInsertId(); 
         return $ID_conductor;
 }
 
 function editarConductor($ID_conductor, $nombre, $vehiculo){
-        $query = $this->db->prepare('UPDATE conductor SET `nombre` = ? , `vehiculo` = ? WHERE `ID_conductor` = ?');
-    $query->execute([$nombre, $vehiculo, $ID_conductor]);
+    $query = $this->db->prepare('UPDATE conductor SET `nombre` = ? , `vehiculo` = ? WHERE `ID_conductor` = ?');
+  return  $query->execute([$nombre, $vehiculo, $ID_conductor]);
 }
 
 function eliminarConductor($ID_conductor){
      $query = $this->db->prepare('DELETE FROM conductor WHERE ID_conductor = ?');
-        $query->execute([$ID_conductor]);
+     $query->execute([$ID_conductor]);
 }
+public function tieneViajesRelacionados($ID_conductor) {
+    $query = $this->db->prepare("SELECT COUNT(*) as total FROM viaje WHERE ID_conductor = ?");
+    $query->execute([$ID_conductor]);
+    $result = $query->fetch(PDO::FETCH_OBJ);
+    return $result->total > 0;
+}
+  public function getViajesPorConductor($ID_conductor) {
+    $query = $this->db->prepare("SELECT * FROM viaje WHERE ID_conductor = ?");
+    $query->execute([$ID_conductor]);
+    return $query->fetchAll(PDO::FETCH_OBJ);
+}
+
+
 }
 ?>

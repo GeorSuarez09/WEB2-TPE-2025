@@ -21,29 +21,52 @@ function getViaje() {
     return $viaje;
 }
 
-function getViajeById(){
+function getViajeById($ID_viaje){
 
     $query = $this->db->prepare('SELECT * FROM viaje WHERE ID_viaje = ?');
-    $query->execute();
+    $query->execute([$ID_viaje]);
 
     $viaje = $query->fetch(PDO::FETCH_OBJ);
 
     return $viaje;
 }
-function agregarViaje($fecha, $origen, $destino, $ID_viaje, $ID_conductor, $ID_usuario){
-    $query = $this->db->prepare('INSERT INTO viaje(fecha, origen, destino, ID_viaje, ID_conductor, ID_usuario) VALUES (?, ?, ?, ?, ?, ?)');
-        $query->execute([$fecha, $origen, $destino, $ID_viaje, $ID_conductor, $ID_usuario]);
-        $ID_viaje = $this->db->lastInsertId(); 
-        return $ID_viaje;
+ 
+function agregarViaje($fecha, $origen, $destino, $ID_conductor, $ID_usuario){
+    $query = $this->db->prepare('INSERT INTO viaje (fecha, origen, destino, ID_conductor, ID_usuario) VALUES (?, ?, ?, ?, ?)');
+    $query->execute([$fecha, $origen, $destino, $ID_conductor, $ID_usuario]);
+    return $this->db->lastInsertId();
 }
 
-function editarViaje($fecha, $origen, $destino, $ID_viaje, $ID_conductor, $ID_usuario){
-    $query = $this->db->prepare('UPDATE viaje SET `fecha` = ? , `origen` = ?, `destino` = ? WHERE `ID_viaje` = ?');
-    $query->execute([$fecha, $origen, $destino, $ID_conductor, $ID_usuario, $ID_viaje]);
-    }
+public function editarViaje($fecha, $origen, $destino, $ID_conductor, $ID_viaje, $ID_usuario) {
+    $query = $this->db->prepare('UPDATE viaje SET fecha = ?, origen = ?, destino = ?, ID_conductor = ?, ID_usuario = ? WHERE ID_viaje = ?');
+    return $query->execute([$fecha, $origen, $destino, $ID_conductor, $ID_usuario, $ID_viaje]);
+}
 
 function eliminarViaje($ID_viaje) {
         $query = $this->db->prepare('DELETE FROM viaje WHERE ID_viaje = ?');
         $query->execute([$ID_viaje]);
     }
+    function getConductor(){
+      // 2. ejecuto la consulta SQL (SELECT * FROM viaje)
+    $query = $this-> db->prepare('SELECT * FROM conductor');
+    $query->execute();
+
+    // 3. obtengo los resultados de la consulta
+    $conductor = $query->fetchAll(PDO::FETCH_OBJ);
+
+    return $conductor;
+}
+function getConductorById($ID_conductor){
+     $query = $this->db->prepare('SELECT * FROM conductor WHERE ID_conductor = ?');
+        $query->execute([$ID_conductor]);
+        $conductor = $query->fetch(PDO::FETCH_OBJ);
+
+        return $conductor;
+
+    }
+    public function getViajesPorConductor($ID_conductor) {
+    $query = $this->db->prepare("SELECT * FROM viaje WHERE ID_conductor = ?");
+    $query->execute([$ID_conductor]);
+    return $query->fetchAll(PDO::FETCH_OBJ);
+}
 }

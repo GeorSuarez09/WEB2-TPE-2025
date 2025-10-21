@@ -1,0 +1,40 @@
+<div>
+    <h3>Detalles del Conductor</h3>
+
+    <ul>
+        <li><strong>Nombre:</strong> <?= $conductor->nombre ?></li>
+        <li><strong>Vehículo:</strong> <?= $conductor->vehiculo ?></li>
+    </ul>
+</div>
+
+<hr>
+
+<div>
+    <h3>Viajes Asignados</h3>
+
+    <?php if (empty($viajes)): ?>
+        <p>Este conductor no tiene viajes asignados.</p>
+    <?php else: ?>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Origen</th>
+                    <th>Destino</th>
+                    <!-- Agregá más columnas si tu tabla viaje tiene más datos -->
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($viajes as $viaje): ?>
+                    <tr>
+                        <td><?= $viaje->fecha ?></td>
+                        <td><?= $viaje->origen ?></td>
+                        <td><?= $viaje->destino ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php endif; ?>
+</div>
+
+<a href="<?= BASE_URL ?>listarC">Volver al listado</a>

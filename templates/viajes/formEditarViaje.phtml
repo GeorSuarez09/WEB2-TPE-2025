@@ -1,0 +1,34 @@
+<form method="POST" action="<?= BASE_URL ?>update/<?= $ID_viaje ?>">
+    <input type="hidden" name="ID_viaje" value="<?= $viaje->ID_viaje ?>">
+
+    <div>
+        <label for="fecha">Fecha de Viaje</label>
+        <input type="date" id="fecha" name="fecha" value="<?= $viaje->fecha ?>" required>
+    </div>
+
+    <div class="col1">
+        <label for="origen">Origen</label>
+        <input type="text" id="origen" name="origen" value="<?= $viaje->origen ?>" required>
+    </div>
+
+    <div class="col1">
+        <label for="destino">Destino</label>
+        <input type="text" id="destino" name="destino" value="<?= $viaje->destino ?>" required>
+    </div>
+
+    <div class="col1">
+        <label for="ID_conductor">Conductor:</label>
+        <select name="ID_conductor" id="ID_conductor" required>
+            <?php foreach ($conductores as $c): ?>
+                <option value="<?= $c->ID_conductor ?>" <?= ($c->ID_conductor == $viaje->ID_conductor) ? 'selected' : '' ?>>
+                    <?= $c->nombre ?> - <?= $c->vehiculo ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+   
+   <input type="hidden" name="ID_usuario" value="<?= $viaje->ID_usuario ?>">
+    <div class="col1">
+        <button type="submit">Actualizar</button>
+    </div>
+</form>

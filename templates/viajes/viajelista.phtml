@@ -1,0 +1,38 @@
+<div>
+    <h3>Listado de Viajes con sus Conductores</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Origen</th>
+                <th>Destino</th>
+                <th>Nombre conductor</th>
+                <th>Vehículo</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($viajes as $viaje): ?> 
+            <?php
+                $conductorAsignado = null;
+                foreach ($conductores as $c) {
+                    if ($c->ID_conductor == $viaje->ID_conductor) {
+                        $conductorAsignado = $c;
+                    }
+                }
+            ?>
+            <tr>
+                <td><?= $viaje->fecha ?></td>
+                <td><?= $viaje->origen ?></td>
+                <td><?= $viaje->destino ?></td>
+                <td><?= $conductorAsignado->nombre ?></td>
+                <td><?= $conductorAsignado->vehiculo ?></td>
+                <td>
+                    <a href="editarViaje/<?= $viaje->ID_viaje ?>">Editar</a>
+                    <a href="<?= BASE_URL ?>eliminar/<?= $viaje->ID_viaje ?>">Eliminar</a>
+                    <a href="<?= BASE_URL ?>verMasViajes/<?= $viaje->ID_viaje ?>">Ver Más</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
