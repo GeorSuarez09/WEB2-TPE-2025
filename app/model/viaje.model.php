@@ -46,24 +46,8 @@ function eliminarViaje($ID_viaje) {
         $query = $this->db->prepare('DELETE FROM viaje WHERE ID_viaje = ?');
         $query->execute([$ID_viaje]);
     }
-    function getConductor(){
-      // 2. ejecuto la consulta SQL (SELECT * FROM viaje)
-    $query = $this-> db->prepare('SELECT * FROM conductor');
-    $query->execute();
-
-    // 3. obtengo los resultados de la consulta
-    $conductor = $query->fetchAll(PDO::FETCH_OBJ);
-
-    return $conductor;
-}
-function getConductorById($ID_conductor){
-     $query = $this->db->prepare('SELECT * FROM conductor WHERE ID_conductor = ?');
-        $query->execute([$ID_conductor]);
-        $conductor = $query->fetch(PDO::FETCH_OBJ);
-
-        return $conductor;
-
-    }
+ 
+    
     public function getViajesPorConductor($ID_conductor) {
     $query = $this->db->prepare("SELECT * FROM viaje WHERE ID_conductor = ?");
     $query->execute([$ID_conductor]);

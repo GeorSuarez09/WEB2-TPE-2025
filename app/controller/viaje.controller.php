@@ -13,15 +13,13 @@ class viajeController
     {
         $this->model = new viajeModel();
         $this->view = new viajeView();
-          $this->modelConductor = new viajeModel();
+         $this->modelConductor = new conductorModel();
     }
 
-   function listarViajes($usuario)
+function listarViajes($usuario)
 {
     $viajes = $this->model->getViaje();
-    //Consulta datos en conductor model, asignandolo a la variable
-    $conductorModel = new conductorModel();
-    //Llama a metodo
+
     $conductores = $this->modelConductor->getConductor();
 
     $this->view->verViajes($viajes, $conductores, $usuario);
