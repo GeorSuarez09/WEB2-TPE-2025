@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* === ESTILOS GENERALES === */
 body {
     background: #1b1b1b;
@@ -252,3 +253,261 @@ tr:hover {
     text-align: center;
     font-weight: bold;
 }
+=======
+    /* === ESTILOS GENERALES === */
+    body {
+        background: #1b1b1b;
+        color: #fff;
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* === HEADER === */
+    .site-header {
+        background: linear-gradient(90deg, #000, #222);
+        color: #fff;
+        padding: 1rem 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .header-container {
+        max-width: 1100px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    .logo span {
+        color: #06d6a0;
+    }
+
+    .navbar a {
+        color: #fff;
+        text-decoration: none;
+        margin-left: 1.5rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+        color: #06d6a0;
+    }
+
+    /* === FOOTER === */
+    .site-footer {
+        background: #111;
+        color: #eee;
+        margin-top: 3rem;
+        padding-top: 2rem;
+    }
+
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        max-width: 1100px;
+        margin: auto;
+        padding: 0 2rem;
+        gap: 4rem;
+    }
+
+    .footer-info, .footer-links {
+        flex: 1 1 45%;
+    }
+
+    .footer-info h3, .footer-links h4 {
+        color: #06d6a0;
+    }
+
+    .footer-links ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-links li {
+        margin: 0.5rem 0;
+    }
+
+    .footer-links a {
+        color: #eee;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+        color: #06d6a0;
+    }
+
+    .footer-bottom {
+        background: #000;
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.9rem;
+        color: #bbb;
+    }
+
+    /* === TITULOS === */
+    h3 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #06d6a0;
+        font-size: 1.6rem;
+        letter-spacing: 0.5px;
+    }
+
+    /* === FORMULARIOS === */
+    form {
+        background: #2a2a2a;
+        max-width: 600px;
+        margin: 3rem auto;
+        padding: 2rem 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .col1 {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+    }
+
+    label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #ccc;
+    }
+
+    /* Inputs y selects */
+    input[type="text"],
+    input[type="date"],
+    input[type="email"],
+    input[type="password"],
+    select {
+        background: #222;
+        color: #fff;
+        border: 2px solid #333;
+        border-radius: 8px;
+        padding: 0.7rem 1rem;
+        font-size: 1rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        outline: none;
+        width: 100%;
+    }
+
+    input:focus,
+    select:focus {
+        border-color: #06d6a0;
+        box-shadow: 0 0 5px #06d6a0;
+    }
+
+    /* Select con flecha personalizada */
+    select {
+        appearance: none;
+        cursor: pointer;
+        background-image: linear-gradient(45deg, transparent 50%, #06d6a0 50%), 
+                        linear-gradient(135deg, #06d6a0 50%, transparent 50%);
+        background-position: calc(100% - 15px) calc(1em + 2px), 
+                            calc(100% - 10px) calc(1em + 2px);
+        background-size: 5px 5px, 5px 5px;
+        background-repeat: no-repeat;
+    }
+
+    /* === BOTONES === */
+    button, 
+    .acciones button {
+        background: #06d6a0;
+        color: #000;
+        border: none;
+        padding: 0.9rem 1.5rem;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+        width: auto;
+    }
+
+    button:hover, 
+    .acciones button:hover {
+        background: #04b585;
+        transform: translateY(-2px);
+    }
+
+    /* Enlaces dentro de botones */
+    .acciones a {
+        color: inherit;
+        text-decoration: none;
+        display: block;
+    }
+
+    /* === ACCIONES (botones en tabla) === */
+    .acciones {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* === TABLAS === */
+    .viajes-container {
+        max-width: 1000px;
+        margin: 3rem auto;
+        background: #2a2a2a;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        color: #fff;
+        background: #3a3a3a;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    th, td {
+        padding: 0.9rem;
+        text-align: center;
+        border-bottom: 1px solid #444;
+    }
+
+    th {
+        background: #06d6a0;
+        color: #000;
+        font-weight: bold;
+        font-size: 1rem;
+    }
+
+    tr:nth-child(even) {
+        background: #333;
+    }
+
+    tr:hover {
+        background: #3f3f3f;
+        transition: background 0.3s ease;
+    }
+
+    /* === ALERTAS LOGIN === */
+    .alert-danger {
+        background-color: #ff4d4d;
+        color: #fff;
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1rem auto;
+        max-width: 600px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+
+>>>>>>> 941f156727671d9e9317ec313eeec3ce92307fe7

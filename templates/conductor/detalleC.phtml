@@ -1,12 +1,18 @@
+<?php require_once './templates/header.php'?>
 <div >
     <h3>Detalles del Conductor</h3>
 
-    <div>
-        <div>
-            <ul>
-                <li><strong>Nombre:</strong> <?=$conductor->nombre?></li>
-                <li><strong>Vehiculo:</strong><?=$conductor->vehiculo?></li>
-            </ul>
-        </div>
-    </div>
+    <table>
+        
+        <tbody>
+            <tr>
+                <td><strong>Nombre</strong></td>
+                <td><?= $conductor->nombre ?></td>
+            </tr>
+            <tr>
+                <td><strong>Vehículo</strong></td>
+                <td><?= $conductor->vehiculo ?></td>
+            </tr>
+        </tbody>
+    </table>
 </div>

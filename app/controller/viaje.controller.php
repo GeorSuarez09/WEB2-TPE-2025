@@ -14,7 +14,7 @@ class viajeController
         $this->view = new viajeView();
     }
 
-   function listarViajes()
+   function listarViajes($usuario)
 {
     $viajes = $this->model->getViaje();
     //Consulta datos en conductor model, asignandolo a la variable
@@ -22,7 +22,7 @@ class viajeController
     //Llama a metodo
     $conductores = $conductorModel->getConductor();
 
-    $this->view->verViajes($viajes, $conductores);
+    $this->view->verViajes($viajes, $conductores, $usuario);
 }
 
 
@@ -38,13 +38,13 @@ class viajeController
        return $this->view->viajeDetalles($viaje, $conductor);
     }
 
-    public function mostrarformViajes()
+    public function mostrarformViajes($usuario)
     {
         $conductorModel = new conductorModel();
         $conductores = $conductorModel->getConductor();
-        $this->view->formularioViaje($conductores);
+        $this->view->formularioViaje($conductores, $usuario);
     }
-    public function addViaje()
+    public function addViaje($request)
     {
 
 
@@ -56,7 +56,7 @@ class viajeController
             !isset($_POST['ID_conductor']) || empty($_POST['ID_conductor']) ||
             !isset($_POST['ID_usuario']) || empty($_POST['ID_usuario'])
         ) {
-            return $this->view->mostrarErrores('Falta completar todos los campos obligatorios');
+            return $this->view->mostrarErrores('Falta completar todos los campos obligatorios', $request->usuario);
         }
 
 
@@ -71,7 +71,7 @@ class viajeController
         $ID_viaje = $this->model->agregarViaje($fecha, $origen, $destino, $ID_conductor, $ID_usuario);
 
         if (!$ID_viaje) {
-            return $this->view->mostrarErrores('Error al insertar viaje');
+            return $this->view->mostrarErrores('Error al insertar viaje', $request->usuario);
         }
 
         // redirijo al home
@@ -118,7 +118,7 @@ class viajeController
         header('Location: ' . BASE_URL . 'listar');
     }
  
-    public function eliminarViaje($ID_viaje){
+    public function eliminarViaje($ID_viaje, $request){
     
         $viaje =$this->model->getViajeById($ID_viaje);
         $eliminar =  $this->model->eliminarViaje($ID_viaje);
@@ -126,7 +126,7 @@ class viajeController
     
             header('Location: ' . BASE_URL . 'listar'); 
         } else {
-            return $this->view->mostrarErrores("No se pudo eliminar el viaje.");
+            return $this->view->mostrarErrores("No se pudo eliminar el viaje.", $request->usuario);
         }    
     
     }
