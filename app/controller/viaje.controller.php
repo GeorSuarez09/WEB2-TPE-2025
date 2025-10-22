@@ -7,11 +7,13 @@ class viajeController
 {
     private $model;
     private $view;
+    private $modelConductor;
 
     function __construct()
     {
         $this->model = new viajeModel();
         $this->view = new viajeView();
+          $this->modelConductor = new viajeModel();
     }
 
    function listarViajes($usuario)
@@ -20,7 +22,7 @@ class viajeController
     //Consulta datos en conductor model, asignandolo a la variable
     $conductorModel = new conductorModel();
     //Llama a metodo
-    $conductores = $conductorModel->getConductor();
+    $conductores = $this->modelConductor->getConductor();
 
     $this->view->verViajes($viajes, $conductores, $usuario);
 }
@@ -34,14 +36,13 @@ class viajeController
             return $this->view->mostrarErrores("No se a encontrado el viaje con la id: $ID_viaje");
         }
         $ID_conductor = $viaje->ID_conductor;
-        $conductor = $this->model->getConductorById($ID_conductor);
+        $conductor = $this->modelConductor->getConductorById($ID_conductor);
        return $this->view->viajeDetalles($viaje, $conductor);
     }
 
     public function mostrarformViajes($usuario)
     {
-        $conductorModel = new conductorModel();
-        $conductores = $conductorModel->getConductor();
+        $conductores = $this->modelConductor->getConductor();
         $this->view->formularioViaje($conductores, $usuario);
     }
     public function addViaje($request)
@@ -84,8 +85,8 @@ class viajeController
             return $this->view->mostrarErrores('El viaje que esta buscando no esta disponible');
         }
 
-        $conductor = $this->model->getConductorById($viaje->ID_conductor);
-        $conductores = $this->model->getConductor();
+        $conductor = $this->modelConductor->getConductorById($viaje->ID_conductor);
+        $conductores = $this->modelConductor->getConductor();
         $this->view->formEditarViaje($ID_viaje, $viaje, $conductor, $conductores);
     }
     public function updateViajes($ID_viaje)

@@ -1,16 +1,18 @@
 <?php
 require_once './app/model/conductor.model.php';
 require_once './app/view/conductor.view.php';
-
+require_once './app/model/viaje.model.php';
 class conductorController
 {
     private $model;
     private $view;
+    private $modelViaje;
 
     function __construct()
     {
         $this->model = new conductorModel();
         $this->view = new conductorView();
+         $this->modelViaje = new viajeModel();
     }
 
     function mostrarConductores()
@@ -101,7 +103,7 @@ class conductorController
        
     
     public function eliminarConductor($ID_conductor) {
-    if ($this->model->tieneViajesRelacionados($ID_conductor)) {
+    if ($this->modelViaje->getViajesPorConductor($ID_conductor)) {
         return $this->view->mostrarErrores("No se puede eliminar el conductor porque tiene viajes asociados.");
     }
 
@@ -110,7 +112,7 @@ class conductorController
 }
 public function verDetallesConViajes($ID_conductor) {
     $conductor = $this->model->getConductorById($ID_conductor);
-    $viajes = $this->model->getViajesPorConductor($ID_conductor);
+    $viajes = $this->modelViaje->getViajesPorConductor($ID_conductor);
 
     if (!$conductor) {
         return $this->view->mostrarErrores("El conductor no existe.");
