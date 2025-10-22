@@ -15,7 +15,7 @@ class viajeView{
         require_once 'templates/viajes/viajeDetalle.phtml';
     }
   function mostrarErrores($mensaje){
-    echo "<div class='error'>$mensaje</div>";
+   require_once 'templates/error.phtml';
 }
 }
 

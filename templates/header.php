@@ -21,9 +21,8 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="header-container">
         <h1 class="logo">🚖 Uber <span>Viajes</span></h1>
         <nav class="navbar">
-            <a href="<?= BASE_URL ?>mostrarFormulario">Inicio</a>
-            <a href="<?= BASE_URL ?>mostrarFormulario">Nuevo viaje</a>
-            <a href="<?= BASE_URL ?>listar">Ver viajes</a>
+            <a href="<?= BASE_URL ?>listar">Inicio</a>
+            <a href="<?= BASE_URL ?>listar">Viajes</a>
             <a href="<?= BASE_URL ?>listarC">Conductores</a>
             <?php if (isset($_SESSION['USER_ID'])): ?>
                 <a href="<?= BASE_URL ?>logout">Cerrar sesión (<?= htmlspecialchars($_SESSION['USER_NAME']) ?>)</a>

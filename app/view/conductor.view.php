@@ -19,6 +19,6 @@ class ConductorView {
 }
 
       function mostrarErrores($mensaje){
-    echo "<div class='error'>$mensaje</div>";
+    require_once 'templates/error.phtml';
 }
 }
