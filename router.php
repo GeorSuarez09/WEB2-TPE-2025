@@ -74,27 +74,30 @@
         //Conductor listar
         case 'listarC':
             $controller = new conductorController();
-            $controller->mostrarConductores();
+            $controller->mostrarConductores($request->usuario);
             break;
 
         //Formulario de conductor
         case 'formularioC':
             $controller = new conductorController();
-            $controller->mostrarformConductores();
+            $controller->mostrarformConductores($request->usuario);
             break;
         //Toma los datos, redirige al listarC
         case 'agregarC':
+             $request = (new GuardMiddleware())->run($request);
             $controller = new conductorController();
-            $controller->agregarConductor();
+            $controller->agregarConductor($request);
             break;
 
         //Formulario de conductor edicion
         case 'editarC':
+             $request = (new GuardMiddleware())->run($request);
             $controller = new conductorController();
             $controller->mostrarFormEditConductor($params[1]);
             break;
         //Toma los datos, redirige al listarC
         case 'updateC':
+             $request = (new GuardMiddleware())->run($request);
             $controller = new conductorController();
             $controller->updateConductores($params[1]);
             break;
@@ -102,8 +105,9 @@
 
         //Elimina conductor
         case 'eliminarC':
+              $request = (new GuardMiddleware())->run($request);
             $controller = new conductorController();
-            $controller->eliminarConductor($params[1]);
+            $controller->eliminarConductor($params[1], $request);
             break;
 
         // Ver mas detalle Conductor
